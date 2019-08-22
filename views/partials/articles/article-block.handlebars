@@ -1,0 +1,10 @@
+	<div class="article-item">
+		<img src="../assets/images/#" alt="">
+		<h3>{{name}}</h3>
+		{{#unless this.devoured}}
+		<button class="mor-burger change-devour" data-id="{{this.id}}">
+			DEVOUR TIME!
+		</button>
+		{{/unless}}
+		<button class="mor-burger delete-burger" data-id="{{this.id}}" href="#">DELETE!</button>
+	</div>
