@@ -12,8 +12,29 @@ header{
     display: inline-block;
     line-height: 72px;
     margin-bottom: 20px;
+    margin-top: 25px;
 
 }
+.singleArticle {
+    margin: 20px;
+    border: solid;
+    border-color: #2f2f2f;
+}
+
+
+.col-md-8 + .col-md-4 { 
+    border-left: 1px solid #2f2f2f;
+  }
+
+.subhead{
+    text-transform: uppercase;
+    border-bottom: 2px solid #2f2f2f;
+    border-top: 2px solid #2f2f2f;
+    padding: 12px 0 12px 0;
+    background-color: white;
+
+}
+
 img {
     width: 250px;
     height: auto;
@@ -30,26 +51,6 @@ p{
 
 }
 
-.headerobjectswrapper{
-}
-
-.subhead{
-    text-transform: uppercase;
-    border-bottom: 2px solid #2f2f2f;
-    border-top: 2px solid #2f2f2f;
-    padding: 12px 0 12px 0;
-
-}
-.weatherforcastbox{
-    position: relative;
-    width: 12%;
-    left: 10px;
-    border: 3px double #2f2f2f;
-    padding: 10px 15px 10px 15px;
-    line-height: 20px;
-    display: inline-block;
-    margin: 0 50px 20px -360px;
-}
 .content{
     font-size: 0;
     line-height: 0;
@@ -59,11 +60,11 @@ p{
 
 
 }
-.collumns{
-
+body{
+    background-image: url(../images/crinkled-paper.jpg);
+    background-size: 100%;
 }
-
-.collumn{
+.colM{
     font-size: 14px;
     line-height: 20px;
     width: 17.5%;
@@ -73,10 +74,8 @@ p{
     margin-bottom: 50px;
     transition: all .7s;
 }
-.collumn + .collumn { 
-  border-left: 1px solid #2f2f2f;
-}
-.collumn .headline{
+
+.headline{
     text-align: center;
     line-height: normal;
     font-family: 'Playfair Display', serif;
@@ -85,7 +84,7 @@ p{
 
 
 }
-.collumn .headline.hl1{
+.headline.hl1{
     font-weight: 700;
     font-size: 30px;
     text-transform: uppercase;
@@ -93,7 +92,7 @@ p{
 
 }
 
-.collumn .headline.hl2{
+.headline.hl2{
     font-weight: 400;
     font-style: italic;
     font-size: 24px;
@@ -101,7 +100,7 @@ p{
     padding: 10px 0 10px 0;
 }
 
-.collumn .headline.hl2:before{
+.colM .headline.hl2:before{
     border-top: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -109,7 +108,7 @@ p{
     display: block;
     margin: 0 auto;
 }
-.collumn .headline.hl2:after{
+.colM .headline.hl2:after{
     border-bottom: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -119,20 +118,20 @@ p{
 
 }
 
-.collumn .headline.hl3{
+.colM .headline.hl3{
     font-weight: 400;
     font-style: italic;
     font-size: 36px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl4{
+.colM .headline.hl4{
     font-weight: 700;
     font-size: 12px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl4:before{
+.colM .headline.hl4:before{
     border-top: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -140,7 +139,7 @@ p{
     display: block;
     margin: 0 auto;
 }
-.collumn .headline.hl4:after{
+.colM .headline.hl4:after{
     border-bottom: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -150,7 +149,7 @@ p{
 
 }
 
-.collumn .headline.hl5{
+.colM .headline.hl5{
     font-weight: 400;
     font-size: 42px;
     text-transform: uppercase;
@@ -158,13 +157,13 @@ p{
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl6{
+.colM .headline.hl6{
     font-weight: 400;
     font-size: 18px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl6:before{
+.colM .headline.hl6:before{
     border-top: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -172,7 +171,7 @@ p{
     display: block;
     margin: 0 auto;
 }
-.collumn .headline.hl6:after{
+.colM .headline.hl6:after{
     border-bottom: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -181,36 +180,36 @@ p{
     margin: 0 auto;
 
 }
-.collumn .headline.hl7{
+.colM .headline.hl7{
     font-weight: 700;
     font-size: 12px;
     box-sizing: border-box;
     display: block;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl8{
+.colM .headline.hl8{
     font-weight: 700;
     font-size: 12px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl9{
+.colM .headline.hl9{
     font-weight: 700;
     font-size: 12px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .headline.hl10{
+.colM .headline.hl10{
     font-weight: 700;
     font-size: 12px;
     box-sizing: border-box;
     padding: 10px 0 10px 0;
 }
-.collumn .citation{
+.colM .citation{
     font-family: 'Playfair Display', serif;
     font-size: 36px;
     line-height: 44px;
-    /*font-style: italic;*/
+    font-style: italic;
     text-align: center;
     font-weight: 400;
     display: block;
@@ -218,7 +217,7 @@ p{
     font-feature-settings: "liga", "dlig";
 
 }
-.collumn .citation:before{
+.colM .citation:before{
     border-top: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -226,7 +225,7 @@ p{
     display: block;
     margin: 0 auto;
 }
-.collumn .citation:after{
+.colM .citation:after{
     border-bottom: 1px solid #2f2f2f;
     content: '';
     width: 100px;
@@ -234,10 +233,10 @@ p{
     display: block;
     margin: 0 auto;
 }
-.collumn .figure {
+.colM .figure {
 	  margin: 0 0 20px;
 }
-.collumn .figcaption{
+.colM .figcaption{
 	font-style: italic;
 	font-size: 12px;
 }
@@ -247,31 +246,26 @@ p{
     mix-blend-mode: multiply;
     width: 100%;
 }
-/*________________________________________________________________________________________________________________________________*/
-/*MEDIAQUERIES*/
-@media only all and (max-width: 1300px) {
-    .weatherforcastbox{
-        display: none;
-    }
+/* ________________________________________________________________________________________________________________________________*/
 
-}
+
 @media only all and (max-width: 1200px) {
-    .collumn{
+    .colM{
         width: 31%;
     }
 
 }
     @media only all and (max-width: 900px) {
-    .collumn{
+    .colM{
         width: 47%;
     }
 
 }
 @media only all and (max-width: 600px) {
-    .collumn{
+    .colM{
         width: 100%;
     }
-	.collumn + .collumn {
+	.col-md-8 + .col-md-4 {
 				border-left: none;
       	border-bottom: 1px solid #2f2f2f;
 	}
@@ -280,6 +274,6 @@ p{
         font-size: 60px;
         line-height: 54px;
         overflow: hidden;
-    }
+    } 
 
-}
+} 

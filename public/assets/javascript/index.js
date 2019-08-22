@@ -5,24 +5,13 @@ $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append(`<div data-id="${data[i]._id}">class="head"><span class="headline hl3"></span>
-      
+      $(".articles").append(`
+      <div class="singleArticle">
+      ${data[i].image}  
+  <p class="colM headlines hl3" data-id="${data[i]._id}">${data[i].title}</p>
+  <a href="${data[i].link}">click on this link to see article</a>
   </div>
-  
-</div>
-<div class="collumn">
-  <div class="head"><span class="headline hl5">${data[i].title}</span>
-      <p><span class="headline hl6">not sure about this content</span></p>
-  </div>
-  Scrapey scrap scrpaey scrap</p>
-  <figure class="figure">
-      ${data[i].image}
-      <figcaption class="figcaption">Hermine hoping for courage.</figcaption>
-  </figure>
-
-  <p>Scrapey scrap scrpaey scrap p tag</p>
-
-  <p>scrappeasdfglkjsdfhglksjdfhgl p tag</p>
+ 
 `);
     }
   });
