@@ -10,18 +10,24 @@
     <button id="newScrape">Scrape New Articles </button>
 </div>
 
-<div class="container content">
+<div class="container">
     <div class="row">
-        <div class="col-md-8 headlines articles">
-         
+        <div class="col-lg-6 headlines articles content">
+           {{#each article}}
+            <span class=" float-left singleArticle">
+                {{image}}
+                <p class="colM headlines" data-id="{{_id}}">{{title}} <a href="{{ink}}" class="float-left">click on this
+                        link to see article</a></p>
 
-
+            </span>
+            {{/each}}
         </div>
-        <div class="col-md-4 notes">
-<img class="media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif" alt="">
+        <div class="col-lg-4">
+            <img class="media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif" alt="">
+            <div id="notes"></div>
+    </div>
+            
         </div>
-
-
     </div>
 </div>
 

@@ -6,12 +6,10 @@ $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
       $(".articles").append(`
-      <div class="singleArticle">
+      <span class=" float-left singleArticle">
       ${data[i].image}  
-  <p class="colM headlines hl3" data-id="${data[i]._id}">${data[i].title}</p>
-  <a href="${data[i].link}">click on this link to see article</a>
-  </div>
- 
+  <p class="colM headlines" data-id="${data[i]._id}">${data[i].title} <a href="${data[i].link}" class="float-left">click on this link to see article</a></p>
+  </span>
 `);
     }
   });
