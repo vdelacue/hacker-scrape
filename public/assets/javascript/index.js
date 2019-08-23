@@ -52,8 +52,8 @@ $.getJSON("/articles", function(data) {
   $(document).on("click", "#newScrape", function() {
     // Empty the notes from the note section
     $("#notes").empty();
-    // Save the id from the p tag
-    var thisId = $(this).attr("data-id");
+   
+   
   
     // Now make an ajax call for the Article
     $.ajax({
@@ -64,6 +64,7 @@ $.getJSON("/articles", function(data) {
       .then(function(data) {
         console.log(data);
         // The title of the article
+        location.reload();
       
       });
   });
