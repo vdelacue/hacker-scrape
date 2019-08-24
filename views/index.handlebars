@@ -7,27 +7,28 @@
 </div>
 <div class="subhead text-center">
     <p>New Brunswick, NJ - Thursday August 22, 1978 - Scraped News</p>
-    <button id="newScrape">Scrape New Articles </button>
+    <button class="btn btn-secondary" id="newScrape">Scrape New Articles </button>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 headlines articles content">
+        <div class="col-lg-6 articles content">
             {{#each article}}
-            <span class=" float-left singleArticle">
+            <span class="float-left singleArticle">
                 {{image}}
                 <p class="colM headlines" data-id="{{_id}}">{{title}} <a href="{{link}}" class="float-left">click on
                         this
                         link to see article</a></p><span>
-                    <i class="fas fa-trash-alt ml-2 delete-note" data-id="{{note}}"></i>
+                    <Button class="delete-note" data-id="{{note}}"><i class="fas fa-trash-alt ml-2 delete-note" data-id="{{note}}"></i></Button>
                 </span>
                 {{/each}}
         </div>
         <div class="col-lg-4" >
-            <div class="form-group" >
+            <div class="form-group mt-4" >
                 <div id="notes">
                 <img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
                     alt="Card image cap">
+                    <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
            </div>
             </div>
             </div>
@@ -35,46 +36,3 @@
     </div>
 </div>
 </div>
-
-{{!-- <div class="content">
-    <div class="colM">
-        <div class="colM">
-            
-        <div class="colM">
-            <div class="head"><span class="headline hl5">SCRAPE SCRAPE scrape</span>
-                <p><span class="headline hl6">not sure about this content</span></p>
-            </div>
-            Scrapey scrap scrpaey scrap</p>
-            <figure class="figure">
-                
-                <figcaption class="figcaption">Hermine hoping for courage.</figcaption>
-            </figure>
-
-            <p>Scrapey scrap scrpaey scrap p tag</p>
-
-            <p>scrappeasdfglkjsdfhglksjdfhgl p tag</p>
-
-        </div>
-        <div class="colM">
-            <div class="head"><span class="headline hl1">Rutgers yayayaya</span>
-                <p><span class="headline hl2">To scrape or not to scrape taht is the questions</p>
-                <figure class="figure">
-                    <img class="media" src="https://media.giphy.com/media/kzB53ztQtSEkE/giphy.gif" alt="">
-                    <figcaption class="figcaption">"This time, let go your conscious self and act on instinct."
-                    </figcaption>
-                </figure>
-                <p>CANNOT SCRAOE ANYTHING SO FRUSTRATING!!!</p>
-                <p>Done with scraping I give up!!!</p>
-            </div>
-            <div class="colM">
-                <div class="head"><span id="" class="headline hl3">scraping sucks! </span>
-                    <p><span class="headline hl4">yuck scrape</span></p>
-                </div>
-                <p></p>scrappeasdfglkjsdfhglksjdfhgl
-
-                <p>NO MORE SCRAPING PLEASE </p>
-            </div>
-        </div>
-    </div> --}}
-
-</body>
