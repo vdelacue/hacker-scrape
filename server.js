@@ -130,7 +130,8 @@ app.get("/articles/:id", function(req, res) {
 });
 app.get("/delete/:id", function(req, res) {
   // Remove a note using the objectID
-  db.notes.remove(
+  console.log("delete route hit")
+  db.Note.deleteOne(
     {
       _id: mongojs.ObjectID(req.params.id)
     },

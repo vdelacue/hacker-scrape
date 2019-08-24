@@ -80,7 +80,7 @@ $(document).on("click", ".delete-note", function () {
     // this uses the data-id of the p-tag, which is linked to the specific note
     $.ajax({
         type: "GET",
-        url: "api/delete/" + selected.attr("data-id"),
+        url: "/delete/" + selected.attr("data-id"),
 
         // On successful call
         success: function (response) {
