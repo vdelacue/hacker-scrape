@@ -13,22 +13,27 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 headlines articles content">
-           {{#each article}}
+            {{#each article}}
             <span class=" float-left singleArticle">
                 {{image}}
-                <p class="colM headlines" data-id="{{_id}}">{{title}} <a href="{{ink}}" class="float-left">click on this
-                        link to see article</a></p>
-
-            </span>
-            {{/each}}
+                <p class="colM headlines" data-id="{{_id}}">{{title}} <a href="{{link}}" class="float-left">click on
+                        this
+                        link to see article</a></p><span>
+                    <i class="fas fa-trash-alt ml-2 delete-note" data-id="{{note}}"></i>
+                </span>
+                {{/each}}
         </div>
-        <div class="col-lg-4">
-            <img class="media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif" alt="">
-            <div id="notes"></div>
-    </div>
-            
+        <div class="col-lg-4" >
+            <div class="form-group" >
+                <div id="notes">
+                <img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+                    alt="Card image cap">
+           </div>
+            </div>
+            </div>
         </div>
     </div>
+</div>
 </div>
 
 {{!-- <div class="content">
