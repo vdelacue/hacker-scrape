@@ -30,6 +30,7 @@ $(document).on("click", "p", function () {
     $(".articles").empty();
     // Save the id from the p tag
     var thisId = $(this).attr("data-id");
+
     // Now make an ajax call for the Article
     $.ajax({
             method: "GET",
@@ -38,7 +39,7 @@ $(document).on("click", "p", function () {
         // With that done, add the note information to the page
         .then(function (data) {
             console.log(data);
-            if (data.note == undefined) {
+            if (data.note._id === undefined) {
                 $(".articles").append(`
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
@@ -49,14 +50,14 @@ $(document).on("click", "p", function () {
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
           ${data.title}<a href="${data.link}" class="alink">read me!</a></p>
-          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note}">click trash can to delete note</i></span>
+          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note._id}">click trash can to delete note</i></span>
           `);
             }
             // A textarea to add a new note body
             $("#notes").append(`
             <img class="media" id="giffy" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
             alt="Card image cap"><label for="comment">Enter your title and comment for this article:</label><input id='titleinput' name='title'> <textarea class='form-control' rows='5' id='bodyinput' name='body'></textarea>`);
-                // A button to submit a new note, with the id of the article saved to it
+            // A button to submit a new note, with the id of the article saved to it
             $("#notes").append(
                 `<button class="btn btn-secondary btn-block" 
                 data-id="${data._id}" id='savenote'>Save Note
@@ -71,18 +72,53 @@ $(document).on("click", "p", function () {
             }
         });
 });
+$(document).on("click", ".delete-note", function () {
+    // Save the p tag that encloses the button
 
-$(".delete-note").on("click", function (event) {
-    var thisId = $(this).attr("data-id");
-    // Send the DELETE request.
-    $.ajax("/api/notes/" + thisId, {
-        type: "DELETE"
-    }).then(function () {
-        console.log("deleted note", id);
-        // Reload the page to get the updated list
-        location.reload();
+    var selected = $(this);
+    // Make an AJAX GET request to delete the specific note
+    // this uses the data-id of the p-tag, which is linked to the specific note
+    $.ajax({
+        type: "GET",
+        url: "api/delete/" + selected.attr("data-id"),
+
+        // On successful call
+        success: function (response) {
+            console.log("deleted note", id);
+            $("#notes").empty();
+            $("#notes").append(`<img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+      alt="Card image cap">
+      <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
+`)
+            appendAllArticles();
+            $("#titleinput").val("");
+            $("#bodyinput").val("");
+        }
     });
+
 });
+
+// $(document).on("click", ".delete-note", function () {
+//     console.log("condition hit")
+//     var thisId = $(this).attr("data-id");
+//     console.log(thisId)
+//     // Send the DELETE request.
+//     $.ajax("/api/delete/" + thisId, {
+//         type: "DELETE"
+//     }).then(function () {
+//         console.log("deleted note", id);
+//         $("#notes").empty();
+//         $("#notes").append(`<img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+//         alt="Card image cap">
+//         <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
+// `)
+//         appendAllArticles();
+//     });
+
+// Also, remove the values entered in the input and textarea for note entry
+//     $("#titleinput").val("");
+//     $("#bodyinput").val("");
+// });
 
 $(document).on("click", "#newScrape", function () {
     // Empty the notes from the note section
@@ -122,6 +158,10 @@ $(document).on("click", "#savenote", function () {
             console.log(data);
             // Empty the notes section
             $("#notes").empty();
+            $("#notes").append(`<img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+            alt="Card image cap">
+            <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
+  `)
             appendAllArticles();
         });
 

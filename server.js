@@ -82,45 +82,6 @@ console.log(response.data)
     res.send("Scrape Complete");
   });
 });
-// A GET route for scraping the echoJS website
-// app.get("/scrape", function(req, res) {
-//   // First, we grab the body of the html with axios
-//   axios.get("https://news.ycombinator.com/").then(function(response) {
-//     // Then, we load that into cheerio and save it to $ for a shorthand selector
-//     var $ = cheerio.load(response.data);
-//     console.log(response.data);
-//     // Now, we grab every h2 within an article tag, and do the following:
-//     $("td.title").each(function(i, element) {
-//       // Save an empty result object
-//       var result = {};
-
-//       console.log("condition hit");
-//       // Add the text and href of every link, and save them as properties of the result object
-//       if (result.title !== undefined && result.link !== undefined) {
-//         result.title = $(this)
-//           .find("a")
-//           .text();
-
-//         result.link = $(this)
-//           .find("a")
-//           .attr("href");
-//       }
-//       // Create a new Article using the `result` object built from scraping
-//       db.Article.create(result)
-//         .then(function(dbArticle) {
-//           // View the added result in the console
-//           console.log(dbArticle);
-//         })
-//         .catch(function(err) {
-//           // If an error occurred, log it
-//           console.log(err);
-//         });
-//     });
-
-//     // Send a message to the client
-//     res.send("Scrape Complete");
-//   });
-// });
 
 // Route for getting all Articles from the db
 app.get("/articles", function(req, res) {
@@ -167,6 +128,28 @@ app.get("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
+app.get("/delete/:id", function(req, res) {
+  // Remove a note using the objectID
+  db.notes.remove(
+    {
+      _id: mongojs.ObjectID(req.params.id)
+    },
+    function(error, removed) {
+      // Log any errors from mongojs
+      if (error) {
+        console.log(error);
+        res.send(error);
+      }
+      else {
+        // Otherwise, send the mongojs response to the browser
+        // This will fire off the success function of the ajax request
+        console.log(removed);
+        res.send(removed);
+      }
+    }
+  );
+});
+
 
 // Route for saving/updating an Article's associated Note
 app.post("/articles/:id", function(req, res) {
