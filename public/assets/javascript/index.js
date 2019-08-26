@@ -39,7 +39,7 @@ $(document).on("click", "p", function () {
         // With that done, add the note information to the page
         .then(function (data) {
             console.log(data);
-            if (data.note._id === undefined) {
+            if (data.note === undefined) {
                 $(".articles").append(`
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
@@ -50,7 +50,7 @@ $(document).on("click", "p", function () {
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
           ${data.title}<a href="${data.link}" class="alink">read me!</a></p>
-          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note._id}">click trash can to delete note</i></span>
+          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note}">click trash can to delete note</i></span>
           `);
             }
             // A textarea to add a new note body
