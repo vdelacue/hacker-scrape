@@ -39,20 +39,29 @@ $(document).on("click", "p", function () {
         // With that done, add the note information to the page
         .then(function (data) {
             console.log(data);
-            if (data.note === undefined) {
+            if (!data.note) {
                 $(".articles").append(`
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
           ${data.title}<a href="${data.link}" class="alink">click on this link to see article or click title to leave a note</a></p>
           `);
+          $("#notes").append(`
+          <img class="media" id="giffy" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+          alt="Card image cap"><label for="comment">Enter your title and comment for this article:</label><input id='titleinput' name='title'> <textarea class='form-control' rows='5' id='bodyinput' name='body'></textarea>`);
+          // A button to submit a new note, with the id of the article saved to it
+          $("#notes").append(
+              `<button class="btn btn-secondary btn-block" 
+              data-id="${data._id}" id='savenote'>Save Note
+              </button>`
+          );
             } else {
                 $(".articles").append(`
           <span class=" float-left singleArticle">${data.image}  
           <p class="colM headlines" target="top-page" data-id="${data._id}">
           ${data.title}<a href="${data.link}" class="alink">read me!</a></p>
-          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note}">click trash can to delete note</i></span>
+          <i class="fas fa-trash-alt m-2 delete-note" data-id="${data.note._id}">click trash can to delete note</i></span>
           `);
-            }
+            
             // A textarea to add a new note body
             $("#notes").append(`
             <img class="media" id="giffy" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
@@ -64,7 +73,7 @@ $(document).on("click", "p", function () {
                 </button>`
             );
             // If there's a note in the article
-            if (data.note) {
+            
                 // Place the title of the note in the title input
                 $("#titleinput").val(data.note.title);
                 // Place the body of the note in the body textarea
@@ -73,28 +82,51 @@ $(document).on("click", "p", function () {
         });
 });
 $(document).on("click", ".delete-note", function () {
-    // Save the p tag that encloses the button
-
+    // Save the p tag that encloses the button    
     var selected = $(this);
     // Make an AJAX GET request to delete the specific note
     // this uses the data-id of the p-tag, which is linked to the specific note
+    var thisId = $(this).attr("data-id");
+    // Run a POST request to change the note, using what's entered in the inputs
     $.ajax({
-        type: "GET",
-        url: "/delete/" + selected.attr("data-id"),
-
-        // On successful call
-        success: function (response) {
-            console.log("deleted note", id);
+            method: "DELETE",
+            url: "/delete/" + thisId,
+            
+        })
+        // With that done
+        .then(function (data) {
+            // Log the response
+            console.log(data);
+            // Empty the notes section
             $("#notes").empty();
             $("#notes").append(`<img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
-      alt="Card image cap">
-      <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
-`)
+            alt="Card image cap">
+            <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
+  `)
+  $("#titleinput").val("");
+  $("#bodyinput").val("");
             appendAllArticles();
-            $("#titleinput").val("");
-            $("#bodyinput").val("");
-        }
-    });
+        });
+
+    // Also, remove the values entered in the input and textarea for note entry
+   
+//     $.ajax({
+//         type: "PUT",
+//         url: "/delete/" + selected.attr("data-id"),
+
+//         // On successful call
+//         success: function (response) {
+//             console.log("deleted note", id);
+//             $("#notes").empty();
+//             $("#notes").append(`<img class="card-img-top media" src="https://media.giphy.com/media/7vfhdCIn13zm8/giphy.gif"
+//       alt="Card image cap">
+//       <p>Look through articles on the left if you want to read the article click the blue link if you would like to leave a comment click the title of the article</p>
+// `)
+//             appendAllArticles();
+//             $("#titleinput").val("");
+//             $("#bodyinput").val("");
+//         }
+//     });
 
 });
 

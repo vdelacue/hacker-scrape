@@ -128,9 +128,9 @@ app.get("/articles/:id", function(req, res) {
       res.json(err);
     });
 });
-app.get("/delete/:id", function(req, res) {
+app.delete("/delete/:id", function(req, res) {
   // Remove a note using the objectID
-  console.log("delete route")
+  console
   db.Note.deleteOne(
     {
       _id: req.params.id
